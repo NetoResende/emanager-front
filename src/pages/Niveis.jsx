@@ -65,7 +65,7 @@ const Niveis = () => {
     return (
         <div className="p-15">
             <div className="flex items-center justify-between mb-4">
-                <h1>Pagina Niveis</h1>
+                <h1>Pagina de Niveis</h1>
                 <Button type="primary" onClick={() => setVerCriar(true)}>Novo nivel</Button>
             </div>
             <Table
