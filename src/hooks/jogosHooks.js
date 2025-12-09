@@ -1,62 +1,62 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { API, queryClient } from './../services/index';
 
-export const useBuscarCliente = () => {
+export const useBuscarJogo = () => {
     return useQuery({
-        queryKey: ["clientes"],
+        queryKey: ["jogos"],
         queryFn: async () => {
-            const response = await API.get("/clientes");
+            const response = await API.get("/jogos");
             return response.data;
         }
     });
 }
 
-export const usePesquisarCliente = () => {
-    return useMutation({
-        mutationFn: async (nome) => {
-            const response = await API.get(`/clientes/pesquisar/${nome}`);
-            return response.data;
-        }
-    });
-}
-
-export const useCriarCliente = () => {
+export const useCriarJogo = () => {
     return useMutation({
         mutationFn: async (dados) => {
-            const response = await API.post("/clientes", dados);
+            const response = await API.post("/jogos", dados);
             return response.data;
         },
         onSuccess: () => {
             queryClient.invalidateQueries({
-                queryKey: ["clientes"]
+                queryKey: ["jogos"]
             })
         }
     });
 }
 
-export const useEditarCliente = () => {
+export const useEditarJogo = () => {
     return useMutation({
         mutationFn: async (dados) => {
-            const response = await API.put(`/clientes/${dados.id}`, dados);
+            const response = await API.put(`/jogos/${dados.id}`, dados);
             return response.data;
         },
         onSuccess: () => {
             queryClient.invalidateQueries({
-                queryKey: ["clientes"]
+                queryKey: ["jogos"]
             })
         }
     });
 }
 
-export const useDeletarCliente = () => {
+export const usePesquisarJogo = () => {
+    return useMutation({
+        mutationFn: async (dados) => {
+            const response = await API.post('/jogos/pesquisar', dados);
+            return response.data;
+        }
+    });
+}
+
+export const useDeletarJogo = () => {
     return useMutation({
         mutationFn: async (id) => {
-            const response = await API.delete(`/clientes/${id}`);
+            const response = await API.delete(`/jogos/${id}`);
             return response.data;
         },
         onSuccess: () => {
             queryClient.invalidateQueries({
-                queryKey: ["clientes"]
+                queryKey: ["jogos"]
             })
         }
     });
