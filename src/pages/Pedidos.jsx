@@ -219,6 +219,14 @@ const Pedidos = () => {
                     onFinish={pesquisar}
                     form={formPesquisar}
                 >
+                    <div>
+                        <Form.Item                   
+                    >
+                        <Input />
+                    </Form.Item>
+                    </div>
+            
+
                     <Form.Item
                         label="Nome do jogo"
                         name={"nome"}
