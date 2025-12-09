@@ -112,6 +112,14 @@ const Pedidos = () => {
                     layout="vertical"
                     onFinish={criar}
                 >
+                    <div>
+                        <Form.Item                   
+                    >
+                        <Input />
+                    </Form.Item>
+                    </div>
+            
+
                     <Form.Item
                         label={"Nome"}
                         name={"nome"}
