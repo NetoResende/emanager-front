@@ -7,8 +7,8 @@ import { AntContext } from "../contexts/AntProvider";
 const Clientes = () => {
 
     const { data: clientes } = useBuscarCliente();
-    const { mutateAsync: criarCliente } = useCriarCliente();
-    const { mutateAsync: editarCliente } = useEditarCliente();
+    const { mutateAsync: criarCliente , isPending: criarPending} = useCriarCliente();
+    const { mutateAsync: editarCliente, isPending: editarPending} = useEditarCliente();
     const { mutateAsync: deletarCliente } = useDeletarCliente();
     const { api } = useContext(AntContext);
     const [verCriar, setVerCriar] = useState(false);
@@ -152,7 +152,7 @@ const Clientes = () => {
                         <Input />
                     </Form.Item>
 
-                    <Button htmlType="submit" type="primary">Criar</Button>
+                    <Button loading={criarPending} htmlType="submit" type="primary">Criar</Button>
                 </Form>
             </Drawer>
 
@@ -194,7 +194,7 @@ const Clientes = () => {
                         <Input />
                     </Form.Item>
 
-                    <Button htmlType="submit" type="primary">Editar</Button>
+                    <Button loading={editarPending} htmlType="submit" type="primary">Editar</Button>
                 </Form>
             </Drawer>
         </div>

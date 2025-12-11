@@ -7,8 +7,8 @@ import { AntContext } from "../contexts/AntProvider";
 const Niveis = () => {
 
     const { data: niveis } = useBuscarNivel();
-    const { mutateAsync: criarNivel } = useCriarNivel();
-    const { mutateAsync: editarNivel } = useEditarNivel();
+    const { mutateAsync: criarNivel, isPending: criarPending } = useCriarNivel();
+    const { mutateAsync: editarNivel, isPending: editarPending } = useEditarNivel();
     const { mutateAsync: deletarNivel } = useDeletarNivel();
     const { api } = useContext(AntContext);
     const [verCriar, setVerCriar] = useState(false);
@@ -129,7 +129,7 @@ const Niveis = () => {
                         <Input />
                     </Form.Item>
 
-                    <Button htmlType="submit" type="primary">Criar</Button>
+                    <Button loading={criarPending} htmlType="submit" type="primary">Criar</Button>
                 </Form>
             </Drawer>
 
@@ -157,7 +157,7 @@ const Niveis = () => {
                         <Input />
                     </Form.Item>
 
-                    <Button htmlType="submit" type="primary">Editar</Button>
+                    <Button  loading={editarPending} htmlType="submit" type="primary">Editar</Button>
                 </Form>
             </Drawer>
         </div>

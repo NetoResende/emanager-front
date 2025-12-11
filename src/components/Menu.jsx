@@ -1,26 +1,65 @@
+import { BiSolidDashboard } from "react-icons/bi";
+import { LuAward, LuGamepad, LuReceipt, LuUser } from "react-icons/lu";
 import { NavLink } from "react-router-dom";
 
 const Menu = () => {
     return (
-        <div className="w-[250px] h-screen bg-blue-600">
+        <div className="w-[250px] h-screen text-white/80 p-4 bg-blue-600 ">
             <ul>
                 <li>
-                    <NavLink to={"/dashboard"}>Dashboard</NavLink>
+                    <NavLink
+                        className={`flex items-center gap-3 px-4 rounded leading-8 [&.active]:bg-white [&.active]:text-blue-600`}
+                        to={"/dashboard"}
+                        end
+                    >
+                        <BiSolidDashboard />
+                        Dashboard
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink to={"/dashboard/niveis"}>Níveis</NavLink>
+                    <NavLink
+                        className={`flex items-center gap-3 px-4 rounded leading-8 [&.active]:bg-white [&.active]:text-blue-600`}
+                        end
+                        to={"/dashboard/niveis"}>
+                        <LuAward />
+                        Níveis
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink to={"/dashboard/usuarios"}>Usuarios</NavLink>
+                    <NavLink
+                        className={`flex items-center gap-3 px-4 rounded leading-8 [&.active]:bg-white [&.active]:text-blue-600`}
+                        end
+                        to={"/dashboard/usuarios"}>
+                        <LuUser/>
+                        Usuarios
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink to={"/dashboard/plataformas"}>Plataformas</NavLink>
+                    <NavLink
+                        className={`flex items-center gap-3 px-4 rounded leading-8 [&.active]:bg-white [&.active]:text-blue-600`}
+                        end
+                        to={"/dashboard/plataformas"}>
+                        <LuGamepad/>
+                        Plataformas
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink to={"/dashboard/clientes"}>Clientes</NavLink>
+                    <NavLink
+                        className={`flex items-center gap-3 px-4 rounded leading-8 [&.active]:bg-white [&.active]:text-blue-600`}
+                        end
+                        to={"/dashboard/clientes"}>
+                        <LuUser/>
+                        Clientes
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink to={"/dashboard/pedidos"}>Pedidos</NavLink>
+                    <NavLink
+                        className={`flex items-center gap-3 px-4 rounded leading-8 [&.active]:bg-white [&.active]:text-blue-600`}
+                        end
+                        to={"/dashboard/pedidos"}>
+                            <LuReceipt/>
+                        Pedidos
+                    </NavLink>
                 </li>
             </ul>
         </div>

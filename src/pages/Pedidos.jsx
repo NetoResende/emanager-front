@@ -1,9 +1,9 @@
-import { Button, Divider, Drawer, Form, Input, message, Popconfirm, Select, Table } from "antd";
-import { useBuscarPedido, useCriarPedido, useDeletarPedido, useEditarPedido } from "../hooks/pedidosHooks";
-import { BiPencil, BiShow, BiTrash } from "react-icons/bi";
+import { Button, Divider, Drawer, Form, Input,  Popconfirm, Select, Table } from "antd";
+import { useBuscarPedido, useCriarPedido, useDeletarPedido} from "../hooks/pedidosHooks";
+import {  BiShow, BiTrash } from "react-icons/bi";
 import { useContext, useState } from "react";
 import { AntContext } from "../contexts/AntProvider";
-import { LuSearch, LuX } from "react-icons/lu";
+import {  LuX } from "react-icons/lu";
 import { useBuscarPlataforma } from './../hooks/plataformasHooks';
 import { usePesquisarJogo } from "../hooks/jogosHooks";
 import { usePesquisarCliente } from "../hooks/clienteHooks";
@@ -13,15 +13,13 @@ const Pedidos = () => {
     const { data: pedidos } = useBuscarPedido();
     const { data: plataformas, isFetched: plataformasOk } = useBuscarPlataforma();
 
-    const { mutateAsync: criarPedido } = useCriarPedido();
-    const { mutateAsync: editarPedido } = useEditarPedido();
+    const { mutateAsync: criarPedido , isPending: criarPending} = useCriarPedido();
     const { mutateAsync: deletarPedido } = useDeletarPedido();
     const { mutateAsync: pesquisarJogo } = usePesquisarJogo();
     const { mutateAsync: pesquisarCliente } = usePesquisarCliente();
 
     const { api } = useContext(AntContext);
     const [verCriar, setVerCriar] = useState(false);
-    const [verEditar, setVerEditar] = useState(false);
     const [verDetalhes, setVerDetalhes] = useState(false);
     const [pedidoSelecionado, setPedidoSelecionado] = useState({});
     const [formCriar] = Form.useForm();
@@ -327,7 +325,7 @@ const Pedidos = () => {
                         <div className="flex justify-between"><span>Total:</span> R$ {(jogos.reduce((total, jogo) => total + jogo.licencas[0].preco, 0)).toFixed(2)}</div>
                     </Form.Item>
 
-                    <Button htmlType="submit" type="primary">Criar</Button>
+                    <Button loading={criarPending} htmlType="submit" type="primary">Criar</Button>
                 </Form>
             </Drawer>
 

@@ -7,8 +7,8 @@ import { AntContext } from "../contexts/AntProvider";
 const Plataformas = () => {
 
     const { data: plataformas } = useBuscarPlataforma();
-    const { mutateAsync: criarPlataforma } = useCriarPlataforma();
-    const { mutateAsync: editarPlataforma } = useEditarPlataforma();
+    const { mutateAsync: criarPlataforma , isPending: criarPending} = useCriarPlataforma();
+    const { mutateAsync: editarPlataforma , isPending: editarPending} = useEditarPlataforma();
     const { mutateAsync: deletarPlataforma } = useDeletarPlataforma();
     const { api } = useContext(AntContext);
     const [verCriar, setVerCriar] = useState(false);
@@ -133,7 +133,7 @@ const Plataformas = () => {
                         <Input />
                     </Form.Item>
 
-                    <Button htmlType="submit" type="primary">Criar</Button>
+                    <Button loading={criarPending} htmlType="submit" type="primary">Criar</Button>
                 </Form>
             </Drawer>
 
@@ -161,7 +161,7 @@ const Plataformas = () => {
                         <Input />
                     </Form.Item>
 
-                    <Button htmlType="submit" type="primary">Editar</Button>
+                    <Button loading={editarPending} htmlType="submit" type="primary">Editar</Button>
                 </Form>
             </Drawer>
         </div>

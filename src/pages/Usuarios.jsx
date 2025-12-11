@@ -8,8 +8,8 @@ import { useBuscarNivel } from "../hooks/nivelHooks";
 const Usuarios = () => {
     const { data: usuarios } = useBuscarUsuario();
     const { data: niveis, isFetched: niveisCarregados } = useBuscarNivel();
-    const { mutateAsync: criarUsuario } = useCriarUsuario();
-    const { mutateAsync: editarUsuario } = useEditarUsuario();
+    const { mutateAsync: criarUsuario, isPending: criarPending } = useCriarUsuario();
+    const { mutateAsync: editarUsuario, isPending: editarPending } = useEditarUsuario();
     const { mutateAsync: deletarUsuario } = useDeletarUsuario();
     const { api } = useContext(AntContext);
     const [verCriar, setVerCriar] = useState(false);
@@ -162,7 +162,7 @@ const Usuarios = () => {
                        />
                     </Form.Item>
                     
-                    <Button htmlType="submit" type="primary">Criar</Button>
+                    <Button loading={criarPending} htmlType="submit" type="primary">Criar</Button>
                 </Form>
             </Drawer>
 
@@ -222,7 +222,7 @@ const Usuarios = () => {
                        />
                     </Form.Item>
 
-                    <Button htmlType="submit" type="primary">Editar</Button>
+                    <Button loading={editarPending} htmlType="submit" type="primary">Editar</Button>
                 </Form>
             </Drawer>
         </div>
